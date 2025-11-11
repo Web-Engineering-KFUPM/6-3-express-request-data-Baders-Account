@@ -140,7 +140,9 @@ app.param("userId", (req,res,next,userId) => {
    if(userIdNum <= 0 ){
       return res.json({ok:false, error:"userId must be positive number" });
    }
-   
+   else if(isNaN(userIdNum)){
+      return res.json({ok:false, error: "error" });
+   }
    else{
       req.userIdNum = userIdNum;
       next();
